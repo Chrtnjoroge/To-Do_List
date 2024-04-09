@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
+   
+  </head>
+  <body>
+    <!-- Container for the to-do list -->
+    <section class="container">
+      <!-- Heading for the to-do list -->
+      <div class="heading">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"  alt="image"  class="heading_img"/>
+          <h1 class="heading_title">To-Do List</h1>
+      </div>
+      <!-- Form for adding new to-do items -->
+      <form class="form">
+        <div>
+          <label for="todo" class="form_label">~ Today I need to ~</label>
+          <input type="text" class="form_input" id="todo" name="to-do"size="30" required/>
+          <button class="button"><span>Submit</span></button>
+        </div>
+      </form>  
+
+      <!-- List for displaying the to-do items -->
+      <div>
+        <ul class="toDoList"></ul>
+      </div>     
+
+    </section>
+    <!-- Script for handling the to-do list functionality -->
+    <script src="scripts.js"></script>
+    <img src="https://media3.giphy.com/media/XbsSR42wC7MWNT2Fcp/source.gif" alt="Animated GIF" width="15%" height="50%" style="bottom: 0; left: 5%;"/>
+     
+  </body>
+</html>

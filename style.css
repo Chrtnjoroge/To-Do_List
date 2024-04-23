@@ -1,146 +1,104 @@
-/* Import the Gochi Hand font from Google Fonts */
-@import url('https://fonts.googleapis.com/css?familFGochi+Hand');
-
-/* Style the body */
 body {
+  font-family: 'Comic Neue', cursive;
   background-color: #a39bd2;
-  min-height: 70vh;
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #494a4b;
-  font-family: 'Gochi Hand', cursive;
-  text-align: center;
-  font-size: 139%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Media query for screens with a minimum width of 500px */
-@media only screen and (min-width: 500px) { 
-    body {
-      min-height: 100vh;
-    }
-  }
-
-/* Style the container for the to-do list */
 .container {
-  width: 100%;
-  height: auto;
-  min-height: 500px;
-  max-width: 500px;
-  min-width: 250px;
-  background: #f1f5f8;
-  background-image: radial-gradient(#bfc0, 7.2%, transparent 0);
-  background-size: 25px 25px;
-  border-radius: 20px;
-  box-shadow: 4px 3px 7px 2px;
-  padding: 1rem;
-  box-sizing: border-box;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f1f5f8;
+  border-radius: 8px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.76);
 }
 
-/* Style the heading for the to-do list */
-.heading {
+h1 {
+  text-align: center;
+  color: #333333;
+}
+
+.input-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-/* Style the heading title */
-.heading_title {
-  transform: rotate(2deg);
-  padding: 0.2rem 1.2rem;
-  border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
-  background-color: rgba(0, 255, 196, 0.7);
-  font-size: 1.5rem;
-}
-
-/* Media query for screens with a minimum width of 500px */
-@media only screen and (min-width: 500px) { 
-    .heading_title {
-      font-size: 2rem;
-    }
-  }
-/* Style the heading image */
-.heading_img {
-  width: 24%;
-}
-
-/* Style the form label */
-.form_label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Style the form input */
-.form_input {
-  box-sizing: border-box;
-  background-color: transparent;
-  padding: 0.7rem;
-  border-bottom-right-radius: 15px 3px;
-  border-bottom-left-radius: 3px 15px;
-  border: solid 3px transparent;
-  border-bottom: dashed 3px #ea95e0;
-  font-family: 'Gochi Hand', cursive;
-  font-size: 1rem;
-  color: rgba(63, 62, 65, 0.7);
-  width: 70%;
   margin-bottom: 20px;
 }
 
-/* Style the form input when it is focused */
-.form_input:focus {
-  outline: none;
-  border: solid 3px #ea95e0;
+.input-container input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #069ab49a;
+  border-radius: 4px 0 0 4px;
 }
 
-/* Style the form button */
-.button {
-  padding: 0;
+.input-container button {
+  padding: 10px;
   border: none;
-  transform: rotate(4deg);
+  background-color: rgba(165, 90, 235, 0.7);
+  border-radius: 0 4px 4px 0;
   cursor: pointer;
-  transform-origin: center;
-  font-family: 'Gochi Hand', cursive;
-  text-decoration: none;
-  padding-bottom: 3px;
-  border-radius: 5px;
-  box-shadow: 0 2px 0 #494a4b;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: rgba(0, 255, 196, 0.7);
+  transition: background-color 0.3s ease;
 }
 
-/* Style the form button span */
-.button span {
-  background: #f1f5f8;
-  display: block;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: 2px solid #494a4b;
+.input-container button:hover {
+  background-color: #63ce68f8;
 }
 
-/* Style the form button when it is active or focused */
-.button:active,
-.button:focus {
-  transform: translateY(4px);
-  padding-bottom: 0px;
-  outline: 0;
+.input-container button img {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
 }
 
-/* Style the to-do list */
-.toDoList {
-  text-align: left;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-/* Style the to-do list li elements */
-.toDoList li {
-  position: relative;
-  padding: 0.5rem;
+li {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
 }
 
-/* Style the to-do list li elements when they are hovered over */
-.toDoList li:hover {
-    cursor: pointer;
-  text-decoration: line-through wavy #474747;
+li:last-child {
+  border-bottom: none;
+}
+
+.delete-btn, .edit-btn {
+  margin-left: auto;
+  cursor: pointer;
+  background-color: rgba(88, 57, 117, 0.7);
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover, .edit-btn:hover {
+  background-color: #e64877;
+}
+
+/* Media Query for Small Screens */
+@media screen and (max-width: 768px) {
+  .input-container {
+      flex-direction: column; /* Stack input and button vertically on small screens */
+  }
+
+  .input-container input[type="text"] {
+      width: 100%; /* Full width on small screens */
+  }
+
+  .input-container button {
+      width: 90%; /* Full width on small screens */
+      margin-top: 10px; /* Add some space between input and button */
+  }
+
+  li {
+      padding: 15px; /* Increase padding for touch interactions */
+  }
 }

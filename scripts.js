@@ -1,71 +1,32 @@
-(() => {
-    // state variables
-    let toDoListArray = [];
-    let colorIndex = 0; // Variable to keep track of the color index
-    const colors = ['#536C7B','#2ABF40', '##9A1E56', '#E1689F', '#7C5DA2']; // Define a list of colors
+document.addEventListener("DOMContentLoaded", function() {
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
 
-    // variables
-    const form = document.querySelector('.form');
-    const input = document.querySelector('.form_input');
-    const ul = document.querySelector('.toDoList');
+    // Function to add a new task
+    function addTask(taskText) {
+        const li = document.createElement("li");
+        li.textContent = taskText;
 
-    // event listeners
-    form.addEventListener('submit', (e) => {
-        // prevent default behavior - Page reload
-        e.preventDefault();
-        // give item a unique ID
-        let itemId = String(Date.now());
-        // get/assign input value
-        let toDoItem = input.value;
-        // pass ID and item into functions
-        addItemToDOM(ul, itemId, toDoItem);
-        addItemToArray(itemId, toDoItem);
-        // clear the input box. (this is default behavior but we got rid of that)
-        input.value = '';
-        // Increment color index for the next item
-        colorIndex = (colorIndex + 1) % colors.length;
-        // Add animation to the new item
-        animateNewItem(itemId);
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = `<i class="fas fa-trash-can"></i>`;
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", function() {
+            li.remove();
+        });
+
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
+    }
+
+    // Event listener for adding a new task
+    addTaskBtn.addEventListener("click", function() {
+        const taskText = taskInput.value.trim();
+        if (taskText !== "") {
+            addTask(taskText);
+            taskInput.value = "";
+        } else {
+            alert("Please enter a task before adding!");
+        }
     });
-
-    ul.addEventListener('click', (e) => {
-        let id = e.target.getAttribute('data-id');
-        if (!id) return; // user clicked in something else
-        // pass id through to functions
-        removeItemFromDOM(id);
-        removeItemFromArray(id);
-    });
-
-    function addItemToDOM(ul, itemId, toDoItem) {
-        // create an li
-        const li = document.createElement('li');
-        li.setAttribute('data-id', itemId);
-        // add toDoItem text to li
-        li.innerText = toDoItem;
-        // add li to the DOM
-        ul.appendChild(li);
-        // Change color of newly added item
-        li.style.color = colors[colorIndex]; // Change color based on color index
-    }
-
-    function addItemToArray(itemId, toDoItem) {
-        // add item to array as an object with an ID so we can find and delete it later
-        toDoListArray.push({ itemId, toDoItem });
-        console.log(toDoListArray);
-    }
-
-    function removeItemFromDOM(id) {
-        // get the list item by data ID
-        var li = document.querySelector('[data-id="' + id + '"]');
-        // remove list item
-        ul.removeChild(li);
-    }
-
-    function removeItemFromArray(id) {
-        // create a new toDoListArray with all li's that don't match the ID
-        toDoListArray = toDoListArray.filter((item) => item.itemId !== id);
-        console.log(toDoListArray);
-    }
-
-   
-})();
+});
